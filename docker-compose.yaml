@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  db:
+    image: bitnami/postgresql:latest
+    container_name: micro-saas-db
+    volumes:
+      - ./db:/bitnami/postgresql
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=serafim
+      - POSTGRESQL_DATABASE=postgres
