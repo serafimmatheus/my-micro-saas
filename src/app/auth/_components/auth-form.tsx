@@ -16,6 +16,8 @@ import { z } from 'zod'
 import { signIn } from 'next-auth/react'
 import { toast } from '@/components/ui/use-toast'
 
+import { ReloadIcon } from '@radix-ui/react-icons'
+
 const authFormSchema = z.object({
   email: z.string().email(),
 })
@@ -26,7 +28,7 @@ export function AuthForm() {
   const {
     handleSubmit,
     register,
-    formState: { isLoading },
+    formState: { isSubmitting },
   } = useForm<AuthFormSchema>({
     resolver: zodResolver(authFormSchema),
   })
@@ -72,8 +74,9 @@ export function AuthForm() {
                 {...register('email')}
               />
             </div>
-            <Button disabled={isLoading} type='submit' className='w-full'>
-              Enviar
+            <Button disabled={isSubmitting} type='submit' className='w-full'>
+              {isSubmitting && <ReloadIcon className='size-3 animate-spin' />}
+              {!isSubmitting && 'Enviar'}
             </Button>
           </div>
         </form>

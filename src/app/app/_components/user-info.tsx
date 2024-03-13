@@ -1,10 +1,7 @@
-'use client'
-
 import { LogOut } from 'lucide-react'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Session } from 'next-auth'
-import { signOut } from 'next-auth/react'
 
 type Props = {
   user: Session['user']
@@ -12,10 +9,6 @@ type Props = {
 
 export function UserInfo({ user }: Props) {
   if (!user) return null
-
-  async function handleLogout() {
-    await signOut()
-  }
 
   return (
     <div className='flex flex-col space-y-4'>
@@ -28,7 +21,7 @@ export function UserInfo({ user }: Props) {
 
         <div className='flex flex-col'>
           <span>{user.email}</span>
-          <Button onClick={handleLogout}>
+          <Button>
             <LogOut />
             Logout
           </Button>

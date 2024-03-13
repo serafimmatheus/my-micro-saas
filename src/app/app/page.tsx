@@ -1,15 +1,20 @@
-import { auth } from '@/lib/service/auth'
-import { UserInfo } from './_components/user-info'
+import { ListingTableTasks } from './(dashboard)/_components/listing-table-tasks'
+import { PageHeader, PageHeaderTitle } from './(dashboard)/page'
+import { ModalTask } from './_components/modal-task'
+import { FileTextIcon } from '@radix-ui/react-icons'
 
-export default async function AppPage() {
-  const session = await auth()
-
+export default function PageApp() {
   return (
-    <div className='max-w-7xl mx-auto w-full p-4'>
-      <div className='flex justify-between items-center'>
-        <h1>Logo App</h1>
-        <UserInfo user={session?.user} />
-      </div>
-    </div>
+    <>
+      <PageHeader className='flex justify-between items-center mb-10'>
+        <PageHeaderTitle className='flex items-center gap-2'>
+          <FileTextIcon className='size-6' />
+          Tasks
+        </PageHeaderTitle>
+
+        <ModalTask />
+      </PageHeader>
+      <ListingTableTasks />
+    </>
   )
 }
