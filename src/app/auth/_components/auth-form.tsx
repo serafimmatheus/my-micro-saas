@@ -33,9 +33,9 @@ export function AuthForm() {
     resolver: zodResolver(authFormSchema),
   })
 
-  const handleOnSubmitForm = async (data: AuthFormSchema) => {
+  const handleOnSubmitForm = (data: AuthFormSchema) => {
     try {
-      await signIn('email', {
+      signIn('nodemailer', {
         email: data.email,
         redirect: false,
         // callbackUrl: `${window.location.origin}/auth/callback`,

@@ -16,9 +16,9 @@ export function ActionsButtonsTasks({ userId }: Props) {
 
   const { toast } = useToast()
 
-  async function deleteTask(id: string) {
+   function deleteTask(id: string) {
     try {
-      await deleteTasksAction(id)
+       deleteTasksAction(id)
 
       toast({
         title: 'Tarefa deletada com sucesso!',

@@ -25,7 +25,7 @@ export function UserDropdown({ user }: UserDropdownProps) {
   if (!user) return
 
   function handleSignOut() {
-    signOut()
+   signOut()
   }
 
   return (

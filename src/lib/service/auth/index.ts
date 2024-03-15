@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth'
-import Email from 'next-auth/providers/email'
+import Email from 'next-auth/providers/nodemailer'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '../database'
 

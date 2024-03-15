@@ -10,12 +10,9 @@ export async function createTasksAction(title: string, description: string) {
     return null
   }
 
-  const newSlug = title.toLowerCase().replace(/ /g, '-')
-
   const tasks = await prisma.todo.create({
     data: {
       title,
-      slug: newSlug,
       description,
       userId: session.user.id,
     },

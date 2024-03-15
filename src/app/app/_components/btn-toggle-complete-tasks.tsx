@@ -2,7 +2,6 @@
 
 import { updateTasksCompletedAction } from '@/actions/updated-task-completed'
 import { Button } from '@/components/ui/button'
-import { CheckIcon } from '@radix-ui/react-icons'
 
 interface Props {
   userId: string
@@ -10,17 +9,16 @@ interface Props {
 }
 
 export function BtnToggleCompleteTasks({ completed, userId }: Props) {
-  async function handleUpdateTaskCompleted() {
-    await updateTasksCompletedAction(userId)
+   function handleUpdateTaskCompleted() {
+     updateTasksCompletedAction(userId)
   }
   return (
     <Button
-      className={`${completed && 'bg-green-500 text-white'}`}
-      size='icon'
-      variant='outline'
+      className={`flex justify-start px-2`}
+      variant='ghost'
       onClick={handleUpdateTaskCompleted}
     >
-      {completed ? <CheckIcon className='size-4' /> : ''}
+      {completed ? 'Desmarcar como concluida' : 'Marcar como concluida'}
     </Button>
   )
 }

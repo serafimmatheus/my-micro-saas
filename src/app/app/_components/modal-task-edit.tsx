@@ -13,6 +13,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -31,11 +32,13 @@ const schemaCreateTask = z.object({
 type CreateTask = z.infer<typeof schemaCreateTask>
 
 export function ModalTaskEdit({ title, description, id }: Props) {
+  const { toast } = useToast()
   const {
     handleSubmit,
     register,
     formState: { isSubmitting },
-    reset,
+    
+    
   } = useForm<CreateTask>({
     resolver: zodResolver(schemaCreateTask),
     defaultValues: {
@@ -44,8 +47,13 @@ export function ModalTaskEdit({ title, description, id }: Props) {
     },
   })
 
-  async function handleUpdateTask(data: CreateTask) {
-    await updateTasksAction(id, data)
+   function handleUpdateTask(data: CreateTask) {
+    toast({
+      title: 'Tarefa atualizada!',
+      description: 'A tarefa foi atualizada com sucesso.',
+    })
+
+     updateTasksAction(id, data)
   }
 
   return (

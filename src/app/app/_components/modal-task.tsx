@@ -38,8 +38,8 @@ export function ModalTask() {
     resolver: zodResolver(schemaCreateTask),
   })
 
-  async function handleCreateTask(data: CreateTask) {
-    await createTasksAction(data.title, data.description)
+   function handleCreateTask(data: CreateTask) {
+     createTasksAction(data.title, data.description)
     reset()
   }
 
@@ -47,11 +47,12 @@ export function ModalTask() {
     <Dialog>
       <DialogTrigger>
         <Button
-          size='icon'
+          size='sm'
           variant='outline'
           className='bg-green-500 text-white hover:bg-green-600 hover:text-white'
         >
-          <PlusIcon className='size-4' />
+          <PlusIcon className='size-4 mr-2' />
+          Adicionar tarefa
         </Button>
       </DialogTrigger>
       <DialogContent>

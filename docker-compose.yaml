@@ -9,6 +9,6 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_USERNAME=serafim
       - POSTGRESQL_PASSWORD=serafim
-      - POSTGRESQL_DATABASE=postgres
+      - POSTGRESQL_DATABASE=micro-saas-db

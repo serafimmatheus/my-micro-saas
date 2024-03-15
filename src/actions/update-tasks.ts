@@ -22,11 +22,15 @@ export async function updateTasksAction(id: string, user: UpdateTasks) {
   })
 
   if (!tasks) {
-    return 'task not found'
+    return {
+      error: 'Task not found',
+    }
   }
 
   if (tasks.userId !== session.user.id) {
-    return 'You are not authorized to delete this task'
+    return {
+      error: 'You are not authorized to delete this task',
+    }
   }
 
   await prisma.todo.update({
